@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { getOrAddSprite } from "./util/getOrAddSprite";
 import { VerseModuleBase } from "./VerseModuleBase";
-import { getOrAddNameplareContainer } from "./util/getOrAddNameplareContainer";
+import { getOrAddNameplateContainer } from "./util/getOrAddNameplateContainer";
 
 type MuteMarkData = {
   isMicOn?: boolean;
@@ -18,7 +18,7 @@ export async function generateHandleMuteMark(textureUrl: string) {
     isMicOn: boolean | undefined,
   ) {
     const muteMark = getOrAddSprite(
-      getOrAddNameplareContainer(parent, avatarObject),
+      getOrAddNameplateContainer(parent, avatarObject),
       "muteMark",
       (s) => {
         s.position.y = 0.3;

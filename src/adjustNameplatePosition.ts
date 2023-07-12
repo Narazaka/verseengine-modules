@@ -1,6 +1,6 @@
 import type { VerseModuleBase } from "./VerseModuleBase";
 import type { PlayerSessionIdData } from "./playerSessionId";
-import { getOrAddNameplareContainer } from "./util/getOrAddNameplareContainer";
+import { getOrAddNameplateContainer } from "./util/getOrAddNameplateContainer";
 
 export default ({
   player,
@@ -9,12 +9,12 @@ export default ({
 }: VerseModuleBase<{}, PlayerSessionIdData>) => ({
   initialize() {
     avatarChangedListeners.push(() => {
-      getOrAddNameplareContainer(player.object3D, player.avatar.object3D, {
+      getOrAddNameplateContainer(player.object3D, player.avatar.object3D, {
         adjustPosition: true,
       });
     });
     otherPersonAvatarChangedListeners.push((otherPerson) => {
-      getOrAddNameplareContainer(
+      getOrAddNameplateContainer(
         otherPerson.object3D,
         otherPerson.avatar?.object3D,
         { adjustPosition: true },

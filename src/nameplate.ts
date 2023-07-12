@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { getOrAddSprite } from "./util/getOrAddSprite";
 import type { VerseModuleBase } from "./VerseModuleBase";
 import type { PlayerSessionIdData } from "./playerSessionId";
-import { getOrAddNameplareContainer } from "./util/getOrAddNameplareContainer";
+import { getOrAddNameplateContainer } from "./util/getOrAddNameplateContainer";
 
 const nameMaxLength = 20;
 
@@ -98,7 +98,7 @@ export function handleNameplate(
   noname?: string,
 ) {
   const nameplate = getOrAddSprite(
-    getOrAddNameplareContainer(parent, avatarObject),
+    getOrAddNameplateContainer(parent, avatarObject),
     "nameplate",
   );
   const previousName = nameCache.get(id);
