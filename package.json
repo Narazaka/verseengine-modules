@@ -1,0 +1,29 @@
+{
+  "name": "verseengine-modules",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc && vite build",
+    "format:check": "prettier --check .",
+    "format:fix": "prettier --write ."
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.1",
+    "@types/three": "^0.152.1",
+    "prettier": "^2.8.8",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.9",
+    "vite-plugin-dts": "^3.2.0",
+    "vite-plugin-externalize-deps": "^0.7.0"
+  },
+  "dependencies": {
+    "nanoid": "^4.0.2"
+  },
+  "peerDependencies": {
+    "@pixiv/three-vrm": "^2.0.0",
+    "@verseengine/verse-three": "^1.0.5",
+    "three": "^0.153.0"
+  }
+}
