@@ -1,6 +1,12 @@
 {
   "name": "verseengine-modules",
+  "description": "modules for verseengine/verse-three",
   "version": "1.0.0",
+  "license": "Zlib",
+  "author": {
+    "name": "narazaka",
+    "url": "https://github.com/Narazaka"
+  },
   "type": "module",
   "scripts": {
     "prepare": "npm run build",
