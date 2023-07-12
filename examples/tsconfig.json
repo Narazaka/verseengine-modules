@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig",
+  "compilerOptions": {
+    "paths": {
+      "verseengine-modules": ["../src"],
+      "verseengine-modules/*": ["../src/*"]
+    }
+  },
+  "include": ["src"]
+}

@@ -6,6 +6,7 @@
     "prepare": "npm run build",
     "clean": "rimraf dist util ./*.js ./*.d.ts",
     "build": "tsc && vite build",
+    "dev": "vite -c examples/vite.config.ts",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write ."
   },
