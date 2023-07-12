@@ -31,6 +31,7 @@ export default defineConfig({
       formats: ["es"],
     },
     minify: false,
+    outDir: ".",
   },
   plugins: [dts(), externalizeDeps()],
 });

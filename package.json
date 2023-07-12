@@ -4,21 +4,29 @@
   "type": "module",
   "scripts": {
     "prepare": "npm run build",
+    "clean": "rimraf dist util ./*.js ./*.d.ts",
     "build": "tsc && vite build",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write ."
+  },
+  "files": [
+    "*.js",
+    "*.d.ts",
+    "util/*.js",
+    "util/*.d.ts"
+  ],
+  "dependencies": {
+    "nanoid": "^4.0.2"
   },
   "devDependencies": {
     "@types/node": "^20.4.1",
     "@types/three": "^0.152.1",
     "prettier": "^2.8.8",
+    "rimraf": "^5.0.1",
     "typescript": "^5.0.2",
     "vite": "^4.3.9",
     "vite-plugin-dts": "^3.2.0",
     "vite-plugin-externalize-deps": "^0.7.0"
-  },
-  "dependencies": {
-    "nanoid": "^4.0.2"
   },
   "peerDependencies": {
     "@pixiv/three-vrm": "^2.0.0",
