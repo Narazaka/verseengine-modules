@@ -1,7 +1,7 @@
 import type { EnvAdapter, VerseStartResult } from "@verseengine/verse-three";
 import type { GenerateInitializable, VerseModuleBase } from "./VerseModuleBase";
-import putData from "./putData";
-import getData from "./getData";
+import putData from "./util/putData";
+import getData from "./util/getData";
 
 /**
  * initialize verseModule
