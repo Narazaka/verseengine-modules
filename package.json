@@ -14,7 +14,8 @@
     "build": "tsc && vite build",
     "dev": "vite -c examples/vite.config.ts",
     "format:check": "prettier --check .",
-    "format:fix": "prettier --write ."
+    "format:fix": "prettier --write .",
+    "doc": "typedoc"
   },
   "files": [
     "*.js",
@@ -30,6 +31,7 @@
     "@types/three": "^0.152.1",
     "prettier": "^2.8.8",
     "rimraf": "^5.0.1",
+    "typedoc": "^0.24.8",
     "typescript": "^5.0.2",
     "vite": "^4.3.9",
     "vite-plugin-dts": "^3.2.0",
