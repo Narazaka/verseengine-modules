@@ -65,6 +65,7 @@ function handleNameplate(
   nameplatePositionHeightOptions?: NameplatePositionHeightOptions,
   nameplateTextureOptions?: NameplateTextureOptions,
 ) {
+  let exists = false;
   const nameplate = getOrAddSprite(
     getOrAddNameplateContainer(
       parent,
@@ -72,6 +73,11 @@ function handleNameplate(
       nameplatePositionHeightOptions,
     ),
     "nameplate",
+    {
+      afterExists: () => {
+        exists = true;
+      },
+    },
   );
   const previousName = nameCache.get(id);
   const useName = playerName(name);
@@ -82,6 +88,10 @@ function handleNameplate(
     nameplate.id,
     nameplateTextureOptions,
   );
+  if (exists) {
+    nameplate.material.map?.dispose();
+    nameplate.material.dispose();
+  }
   nameplate.material = material;
   nameplate.scale.set(scale.x, scale.y, scale.z);
   nameCache.set(id, useName);
