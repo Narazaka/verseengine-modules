@@ -13,11 +13,11 @@ export function getOrAddNameplateContainer(
     () => new THREE.Object3D(),
     {
       afterCreate: (container) => {
-        container.position.y = namePlatePositionHeight(avatarObject);
+        container.position.y = nameplatePositionHeight(avatarObject);
       },
       afterExists: options?.adjustPosition
         ? (container) => {
-            container.position.y = namePlatePositionHeight(avatarObject);
+            container.position.y = nameplatePositionHeight(avatarObject);
           }
         : undefined,
     },

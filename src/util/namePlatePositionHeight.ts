@@ -1,6 +1,7 @@
 import * as THREE from "three";
 
-export function namePlatePositionHeight(
+/** detect nameplate position by avatar bounds */
+export function nameplatePositionHeight(
   avatarObject: THREE.Object3D | undefined,
 ) {
   if (!avatarObject) {
