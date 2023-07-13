@@ -3,7 +3,7 @@ import { timestampString } from "./timestampString";
 export function createLogContainer() {
   const $log = document.createElement("div");
   $log.style.position = "absolute";
-  $log.style.bottom = "5px";
+  $log.style.bottom = "35px";
   $log.style.right = "5px";
   $log.style.width = "calc(100vw - 60px)";
   $log.style.color = "#fff";

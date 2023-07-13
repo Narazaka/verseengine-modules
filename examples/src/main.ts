@@ -13,6 +13,7 @@ import enableXrController from "verseengine-modules/enableXrController";
 import enableMoveController from "verseengine-modules/enableMoveController";
 import nameLog from "verseengine-modules/nameLog";
 import adjustNameplatePosition from "verseengine-modules/adjustNameplatePosition";
+import chat from "verseengine-modules/chat";
 
 function main() {
   const domRoot = document.getElementById("app")!;
@@ -57,7 +58,8 @@ function main() {
       .initialize(joinSound, { audioSrc: "./asset/ui/join.m4a" })
       .initialize(enableXrController)
       .initialize(enableMoveController)
-      .initialize(nameLog, {});
+      .initialize(nameLog, {})
+      .initialize(chat, {});
   });
 
   if ("xr" in navigator && navigator.xr) {
