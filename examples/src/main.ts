@@ -11,7 +11,7 @@ import type { Tick } from "./Tick";
 import { setupScene } from "./setupScene";
 import enableXrController from "verseengine-modules/enableXrController";
 import enableMoveController from "verseengine-modules/enableMoveController";
-import log from "verseengine-modules/log";
+import nameLog from "verseengine-modules/nameLog";
 import adjustNameplatePosition from "verseengine-modules/adjustNameplatePosition";
 
 function main() {
@@ -57,7 +57,7 @@ function main() {
       .initialize(joinSound, { audioSrc: "./asset/ui/join.m4a" })
       .initialize(enableXrController)
       .initialize(enableMoveController)
-      .initialize(log);
+      .initialize(nameLog, {});
   });
 
   if ("xr" in navigator && navigator.xr) {
