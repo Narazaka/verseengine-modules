@@ -19,4 +19,8 @@ function listFiles(root) {
 module.exports = {
   entryPoints: [...listFiles("src"), ...listFiles("src/util")],
   basePath: "src",
+  navigationLinks: {
+    Example:
+      "https://github.com/Narazaka/verseengine-modules/blob/master/examples/src/main.ts",
+  },
 };
