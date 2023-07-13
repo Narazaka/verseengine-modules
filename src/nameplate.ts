@@ -3,6 +3,7 @@ import { getOrAddSprite } from "./util/getOrAddSprite";
 import type { VerseModuleBase } from "./VerseModuleBase";
 import type { PlayerSessionIdData } from "./playerSessionId";
 import { getOrAddNameplateContainer } from "./util/getOrAddNameplateContainer";
+import { playerName } from "./util/playerName";
 
 const nameMaxLength = 20;
 
@@ -102,7 +103,7 @@ export function handleNameplate(
     "nameplate",
   );
   const previousName = nameCache.get(id);
-  const useName = name || noname || "<noname>";
+  const useName = playerName(name || noname);
   if (previousName === useName) return;
 
   const { material, scale } = createNameplateSpriteData(useName, nameplate.id);
