@@ -63,7 +63,7 @@ function handleNameplate(
   id: string,
   name: string | undefined,
   nameplatePositionHeightOptions?: NameplatePositionHeightOptions,
-  nameplateTextureOptions?: TextTextureOptions,
+  textTextureOptions?: TextTextureOptions,
 ) {
   let exists = false;
   const nameplate = getOrAddSprite(
@@ -86,7 +86,7 @@ function handleNameplate(
   const { material, scale } = createTextSpriteData(
     useName,
     nameplate.id,
-    nameplateTextureOptions,
+    textTextureOptions,
   );
   if (exists) {
     nameplate.material.map?.dispose();
@@ -125,7 +125,7 @@ export default ({
     /**
      * nameplate texture options
      */
-    nameplateTextureOptions?: TextTextureOptions;
+    textTextureOptions?: TextTextureOptions;
     /**
      * name change handler
      *
@@ -153,7 +153,7 @@ export default ({
           getData().playerSessionId,
           name,
           options?.nameplatePositionHeightOptions,
-          options?.nameplateTextureOptions,
+          options?.textTextureOptions,
         );
     });
 
@@ -164,7 +164,7 @@ export default ({
         data.playerSessionId,
         data.name,
         options?.nameplatePositionHeightOptions,
-        options?.nameplateTextureOptions,
+        options?.textTextureOptions,
       );
     });
   },
