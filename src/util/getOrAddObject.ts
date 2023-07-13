@@ -1,5 +1,13 @@
 import * as THREE from "three";
 
+/**
+ * get named object if it exists, otherwise add it
+ *
+ * @param parent parent object
+ * @param name object name to find
+ * @param create create the object when it does not exists
+ * @param options options
+ */
 export function getOrAddObject<
   T extends THREE.Object3D<THREE.Event> = THREE.Object3D<THREE.Event>,
 >(
@@ -7,7 +15,9 @@ export function getOrAddObject<
   name: string,
   create?: () => T,
   options?: {
+    /** emitted when object does not exists */
     afterCreate?: (obj: T) => unknown;
+    /** emitted when object exists */
     afterExists?: (obj: T) => unknown;
   },
 ) {
