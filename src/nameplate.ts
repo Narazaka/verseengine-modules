@@ -9,6 +9,8 @@ import type { PlayerSessionIdData } from "./playerSessionId";
 import { getOrAddNameplateContainer } from "./util/getOrAddNameplateContainer";
 import { playerName } from "./util/playerName";
 import { NameplatePositionHeightOptions } from "./util/namePlatePositionHeight";
+import { NameplateTextureOptions } from "./util/getTextTextureCanvas";
+import { createTextSpriteData } from "./util/createTextSpriteData";
 
 const nameMaxLength = 20;
 
@@ -53,152 +55,6 @@ export function createNameInput(parent: HTMLElement) {
   };
 }
 
-const nameplateCanvasCache = new Map<number, HTMLCanvasElement>();
-
-/**
- * get cached canvas object
- *
- * @internal
- *
- * @param id nameplate object id
- */
-export function getNameplateTextureCanvasCache(id: number) {
-  let canvas = nameplateCanvasCache.get(id);
-  if (!canvas) {
-    canvas = document.createElement("canvas");
-    nameplateCanvasCache.set(id, canvas);
-  }
-  return canvas;
-}
-
-export type NameplateTextureOptions = {
-  /**
-   * text font
-   *
-   * @default "128px sans-serif"
-   */
-  font?: string;
-  /**
-   * text fillStyle
-   *
-   * @default "white"
-   */
-  style?: string | CanvasGradient | CanvasPattern;
-  /**
-   * background fillStyle
-   *
-   * @default "rgba(0, 0, 0, 0.3)"
-   */
-  backgroundStyle?: string | CanvasGradient | CanvasPattern;
-  /** nameplate canvas padding from text bounds */
-  padding?: {
-    /** @default 100 */
-    width?: number;
-    /** @default 50 */
-    height?: number;
-  };
-  /**
-   * custom background drawing
-   */
-  onBackground?(
-    ctx: CanvasRenderingContext2D,
-    text: string,
-    textMetrics: TextMetrics,
-  ): unknown;
-  /**
-   * custom text drawing
-   */
-  onText?(
-    ctx: CanvasRenderingContext2D,
-    text: string,
-    textMetrics: TextMetrics,
-  ): unknown;
-};
-
-const font = "128px sans-serif";
-
-/**
- * get nameplate drawn canvas for the text
- *
- * @internal
- *
- * @param text the text
- * @param idOrCanvas the nameplate object id for canvas cache or the target canvas
- * @param options options
- */
-export function getNameplateTextureCanvas(
-  text: string,
-  idOrCanvas: number | HTMLCanvasElement,
-  options?: NameplateTextureOptions,
-) {
-  const canvas =
-    typeof idOrCanvas === "number"
-      ? getNameplateTextureCanvasCache(idOrCanvas)
-      : idOrCanvas;
-
-  const ctx = canvas.getContext("2d")!;
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  ctx.font = options?.font || font;
-  const textMetrics = ctx.measureText(text);
-
-  ctx.canvas.width = textMetrics.width + (options?.padding?.width || 100) * 2;
-  ctx.canvas.height =
-    textMetrics.actualBoundingBoxAscent + (options?.padding?.height || 50) * 2;
-
-  ctx.fillStyle = options?.backgroundStyle || "rgba(0, 0, 0, 0.3)";
-  if (options?.onBackground) {
-    options.onBackground(ctx, text, textMetrics);
-  } else {
-    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-  }
-
-  ctx.fillStyle = options?.style || "white";
-  ctx.font = options?.font || font;
-  if (options?.onText) {
-    options.onText(ctx, text, textMetrics);
-  } else {
-    ctx.fillText(
-      text,
-      (ctx.canvas.width - textMetrics.width) / 2,
-      (ctx.canvas.height + textMetrics.actualBoundingBoxAscent) / 2,
-    );
-  }
-  return canvas;
-}
-
-export type NameplateSpriteData = {
-  material: THREE.SpriteMaterial;
-  scale: {
-    x: number;
-    y: number;
-    z: number;
-  };
-};
-
-/**
- * get nameplate drawn sprite for the text
- *
- * @internal
- *
- * @param text the text
- * @param idOrCanvas the nameplate object id for canvas cache or the target canvas
- * @param options options
- */
-export function createNameplateSpriteData(
-  text: string,
-  idOrCanvas: number | HTMLCanvasElement,
-  options?: NameplateTextureOptions,
-): NameplateSpriteData {
-  const canvas = getNameplateTextureCanvas(text, idOrCanvas, options);
-  const texture = new THREE.CanvasTexture(canvas);
-  const material = new THREE.SpriteMaterial({ map: texture });
-  return {
-    material,
-    scale: { x: canvas.width / 1000, y: canvas.height / 1000, z: 1 },
-  };
-}
-
 const nameCache = new Map<string, string | undefined>();
 
 function handleNameplate(
@@ -221,7 +77,7 @@ function handleNameplate(
   const useName = playerName(name);
   if (previousName === useName) return;
 
-  const { material, scale } = createNameplateSpriteData(
+  const { material, scale } = createTextSpriteData(
     useName,
     nameplate.id,
     nameplateTextureOptions,
