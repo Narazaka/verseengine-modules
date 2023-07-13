@@ -43,6 +43,7 @@ function createChatMessageInput(parent: HTMLElement) {
 }
 
 function makeLogMessage(data: PlayerNameData & ChatMessageData) {
+  if (!data.chatMessage) return undefined;
   return `[${playerName(data.name)}] ${data.chatMessage}`;
 }
 
@@ -66,16 +67,14 @@ export default ({
 
     addTextDataChangedListener((_, data) => {
       const message = makeLogMessage(data);
-      if (message) {
-        addLog(message);
-      }
+      if (message) addLog(message);
     });
 
     (options?.handleChatMessage || createChatMessageInput(domRoot))(
       (chatMessage) => {
         putData({ chatMessage });
         const message = makeLogMessage({ chatMessage, name: getData().name });
-        addLog(message);
+        if (message) addLog(message);
       },
     );
   },
