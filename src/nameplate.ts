@@ -3,14 +3,14 @@
  * @packageDocumentation
  */
 import * as THREE from "three";
-import { getOrAddSprite } from "./util/getOrAddSprite";
+import { getOrAddSprite } from "./util/graphic/getOrAddSprite";
 import type { VerseModuleBase } from "./VerseModuleBase";
 import type { PlayerSessionIdData } from "./playerSessionId";
-import { getOrAddNameplateContainer } from "./util/getOrAddNameplateContainer";
+import { getOrAddNameplateContainer } from "./util/graphic/getOrAddNameplateContainer";
 import { playerName } from "./util/playerName";
-import { NameplatePositionHeightOptions } from "./util/namePlatePositionHeight";
-import { NameplateTextureOptions } from "./util/getTextTextureCanvas";
-import { createTextSpriteData } from "./util/createTextSpriteData";
+import { NameplatePositionHeightOptions } from "./util/graphic/namePlatePositionHeight";
+import { NameplateTextureOptions } from "./util/graphic/getTextTextureCanvas";
+import { createTextSpriteData } from "./util/graphic/createTextSpriteData";
 
 const nameMaxLength = 20;
 

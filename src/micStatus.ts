@@ -3,9 +3,9 @@
  * @packageDocumentation
  */
 import * as THREE from "three";
-import { getOrAddSprite } from "./util/getOrAddSprite";
+import { getOrAddSprite } from "./util/graphic/getOrAddSprite";
 import { VerseModuleBase } from "./VerseModuleBase";
-import { getOrAddNameplateContainer } from "./util/getOrAddNameplateContainer";
+import { getOrAddNameplateContainer } from "./util/graphic/getOrAddNameplateContainer";
 
 export type MuteMarkData = {
   isMicOn?: boolean;

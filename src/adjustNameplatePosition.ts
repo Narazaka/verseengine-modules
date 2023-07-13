@@ -3,7 +3,7 @@
  * @packageDocumentation
  */
 import type { VerseModuleBase } from "./VerseModuleBase";
-import { getOrAddNameplateContainer } from "./util/getOrAddNameplateContainer";
+import { getOrAddNameplateContainer } from "./util/graphic/getOrAddNameplateContainer";
 
 /**
  * adjust nameplate position when changing avatars
