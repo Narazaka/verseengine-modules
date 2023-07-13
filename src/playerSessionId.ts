@@ -9,6 +9,9 @@ export type PlayerSessionIdData = {
   playerSessionId: string;
 };
 
+/**
+ * stores unique player session id
+ */
 export default ({ putData }: VerseModuleBase<PlayerSessionIdData>) => ({
   initialize() {
     const playerSessionId = nanoid();
