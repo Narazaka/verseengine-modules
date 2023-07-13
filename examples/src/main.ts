@@ -62,7 +62,10 @@ function main() {
       .initialize(enableXrController)
       .initialize(enableMoveController)
       .initialize(nameLog, {})
-      .initialize(chat, { balloon: true });
+      .initialize(chat, {
+        balloon: true,
+        notifySound: { audioSrc: "./asset/ui/chat.m4a" },
+      });
   });
 
   if ("xr" in navigator && navigator.xr) {

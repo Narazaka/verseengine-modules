@@ -52,7 +52,10 @@ verseModule
   .initialize(enableXrController)
   .initialize(enableMoveController)
   .initialize(nameLog, {})
-  .initialize(chat, { balloon: true });
+  .initialize(chat, {
+    balloon: true,
+    notifySound: { audioSrc: "./asset/ui/chat.m4a" },
+  });
 ```
 
 see [examples/src/main.ts](https://github.com/Narazaka/verseengine-modules/blob/master/examples/src/main.ts)

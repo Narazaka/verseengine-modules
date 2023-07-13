@@ -12,6 +12,7 @@ import { getOrAddSprite } from "./util/graphic/getOrAddSprite";
 import { getOrAddNameplateContainer } from "./util/graphic/getOrAddNameplateContainer";
 import { createTextSpriteData } from "./util/graphic/createTextSpriteData";
 import { drawRoundedRectPath } from "./util/graphic/drawRoundedRectPath";
+import { createCachedAudio } from "./util/cachedAudio";
 
 const chatMessageMaxLength = 200;
 
@@ -129,6 +130,8 @@ function handleChatBalloon(
   balloon.scale.set(scale.x, scale.y, scale.z);
 }
 
+const { getAudio, createAudio } = createCachedAudio();
+
 export type ChatMessageData = {
   chatMessage?: string;
 };
@@ -148,6 +151,10 @@ export default ({
       onChatMessage: (chatMessage: string) => unknown,
     ) => unknown;
     addLog?: ((message: string) => unknown) | false;
+    notifySound?: {
+      audioSrc: string;
+      volume?: number;
+    };
     balloon?:
       | true
       | {
@@ -173,11 +180,22 @@ export default ({
         : options?.addLog || getDefaultAddLog(domRoot);
     const balloonOption = options?.balloon === true ? {} : options?.balloon;
 
+    if (options?.notifySound) {
+      createAudio(
+        domRoot,
+        options.notifySound.audioSrc,
+        options.notifySound.volume,
+      );
+    }
+
     addTextDataChangedListener((otherPerson, data) => {
       if (data.chatMessage) {
         if (addLog) {
           const message = makeLogMessage(data);
           addLog(message!);
+        }
+        if (options?.notifySound) {
+          getAudio()?.play();
         }
       }
       if (balloonOption) {
