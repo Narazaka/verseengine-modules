@@ -17,7 +17,11 @@ function listFiles(root) {
 
 /** @type {import('typedoc').TypeDocOptions} */
 module.exports = {
-  entryPoints: [...listFiles("src"), ...listFiles("src/util")],
+  entryPoints: [
+    ...listFiles("src"),
+    ...listFiles("src/util"),
+    ...listFiles("src/util/graphic"),
+  ],
   basePath: "src",
   navigationLinks: {
     Github: "https://github.com/Narazaka/verseengine-modules",

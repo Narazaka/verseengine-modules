@@ -26,6 +26,7 @@ export default defineConfig({
       entry: {
         ...toMap(listFiles("src"), "src"),
         ...toMap(listFiles("src/util"), "src"),
+        ...toMap(listFiles("src/util/graphic"), "src"),
       },
       name: "verseengineModules",
       formats: ["es"],

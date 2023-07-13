@@ -21,7 +21,9 @@
     "*.js",
     "*.d.ts",
     "util/*.js",
-    "util/*.d.ts"
+    "util/*.d.ts",
+    "util/graphic/*.js",
+    "util/graphic/*.d.ts"
   ],
   "dependencies": {
     "nanoid": "^4.0.2"
