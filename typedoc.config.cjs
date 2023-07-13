@@ -20,6 +20,7 @@ module.exports = {
   entryPoints: [...listFiles("src"), ...listFiles("src/util")],
   basePath: "src",
   navigationLinks: {
+    Github: "https://github.com/Narazaka/verseengine-modules",
     Example:
       "https://github.com/Narazaka/verseengine-modules/blob/master/examples/src/main.ts",
   },
