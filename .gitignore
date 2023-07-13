@@ -15,7 +15,7 @@ dist-ssr
 *.d.ts
 !/src/vite-env.d.ts
 !/examples/src/vite-env-override.d.ts
-/doc
+/docs
 
 # Editor directories and files
 .vscode/*

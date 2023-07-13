@@ -19,5 +19,4 @@ function listFiles(root) {
 module.exports = {
   entryPoints: [...listFiles("src"), ...listFiles("src/util")],
   basePath: "src",
-  out: "doc",
 };
