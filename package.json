@@ -1,7 +1,7 @@
 {
   "name": "verseengine-modules",
   "description": "modules for verseengine/verse-three",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "license": "Zlib",
   "author": {
     "name": "narazaka",
