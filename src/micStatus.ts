@@ -20,10 +20,12 @@ export async function generateHandleMuteMark(textureUrl: string) {
     const muteMark = getOrAddSprite(
       getOrAddNameplateContainer(parent, avatarObject),
       "muteMark",
-      (s) => {
-        s.position.y = 0.3;
-        s.scale.set(0.15, 0.15, 0.15);
-        s.material = mat;
+      {
+        afterCreate: (s) => {
+          s.position.y = 0.3;
+          s.scale.set(0.15, 0.15, 0.15);
+          s.material = mat;
+        },
       },
     );
     muteMark.visible = !isMicOn;
