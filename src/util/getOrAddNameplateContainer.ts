@@ -1,6 +1,14 @@
 import * as THREE from "three";
 import { getOrAddObject } from "./getOrAddObject";
-import { nameplatePositionHeight } from "./namePlatePositionHeight";
+import {
+  NameplatePositionHeightOptions,
+  nameplatePositionHeight,
+} from "./namePlatePositionHeight";
+
+export type GetOrAddNameplateContainerOptions = {
+  /** re-adjust position even when the nameplate container exists */
+  adjustPosition?: boolean;
+};
 
 /**
  * get the nameplate container object if it exists, otherwise add it
@@ -13,10 +21,7 @@ import { nameplatePositionHeight } from "./namePlatePositionHeight";
 export function getOrAddNameplateContainer(
   parent: THREE.Object3D,
   avatarObject: THREE.Object3D | undefined,
-  options?: {
-    /** re-adjust position even when the nameplate container exists */
-    adjustPosition?: boolean;
-  },
+  options?: GetOrAddNameplateContainerOptions & NameplatePositionHeightOptions,
 ) {
   return getOrAddObject(
     parent,
@@ -24,11 +29,14 @@ export function getOrAddNameplateContainer(
     () => new THREE.Object3D(),
     {
       afterCreate: (container) => {
-        container.position.y = nameplatePositionHeight(avatarObject);
+        container.position.y = nameplatePositionHeight(avatarObject, options);
       },
       afterExists: options?.adjustPosition
         ? (container) => {
-            container.position.y = nameplatePositionHeight(avatarObject);
+            container.position.y = nameplatePositionHeight(
+              avatarObject,
+              options,
+            );
           }
         : undefined,
     },

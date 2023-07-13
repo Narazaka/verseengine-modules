@@ -8,6 +8,7 @@ import type { VerseModuleBase } from "./VerseModuleBase";
 import type { PlayerSessionIdData } from "./playerSessionId";
 import { getOrAddNameplateContainer } from "./util/getOrAddNameplateContainer";
 import { playerName } from "./util/playerName";
+import { NameplatePositionHeightOptions } from "./util/namePlatePositionHeight";
 
 const nameMaxLength = 20;
 
@@ -205,10 +206,15 @@ function handleNameplate(
   avatarObject: THREE.Object3D,
   id: string,
   name: string | undefined,
-  options?: NameplateTextureOptions,
+  nameplatePositionHeightOptions?: NameplatePositionHeightOptions,
+  nameplateTextureOptions?: NameplateTextureOptions,
 ) {
   const nameplate = getOrAddSprite(
-    getOrAddNameplateContainer(parent, avatarObject),
+    getOrAddNameplateContainer(
+      parent,
+      avatarObject,
+      nameplatePositionHeightOptions,
+    ),
     "nameplate",
   );
   const previousName = nameCache.get(id);
@@ -218,7 +224,7 @@ function handleNameplate(
   const { material, scale } = createNameplateSpriteData(
     useName,
     nameplate.id,
-    options,
+    nameplateTextureOptions,
   );
   nameplate.material = material;
   nameplate.scale.set(scale.x, scale.y, scale.z);
@@ -246,6 +252,10 @@ export default ({
      * @default true
      */
     local?: boolean;
+    /**
+     * nameplate position height options
+     */
+    nameplatePositionHeightOptions?: NameplatePositionHeightOptions;
     /**
      * nameplate texture options
      */
@@ -276,6 +286,7 @@ export default ({
           player.avatar.object3D,
           getData().playerSessionId,
           name,
+          options?.nameplatePositionHeightOptions,
           options?.nameplateTextureOptions,
         );
     });
@@ -286,6 +297,7 @@ export default ({
         otherPerson.avatar?.object3D,
         data.playerSessionId,
         data.name,
+        options?.nameplatePositionHeightOptions,
         options?.nameplateTextureOptions,
       );
     });
