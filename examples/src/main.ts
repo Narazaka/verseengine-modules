@@ -14,6 +14,7 @@ import enableMoveController from "verseengine-modules/enableMoveController";
 import nameLog from "verseengine-modules/nameLog";
 import adjustNameplatePosition from "verseengine-modules/adjustNameplatePosition";
 import chat from "verseengine-modules/chat";
+import { setNoname } from "verseengine-modules/util/playerName";
 
 function main() {
   const domRoot = document.getElementById("app")!;
@@ -44,6 +45,8 @@ function main() {
     teleportTargetObjects,
   ).then(({ verseStartResult, envAdapter }) => {
     ticks.push(verseStartResult.tick);
+
+    setNoname("<NONAME>");
 
     const verseModule = initializeVerseModule({
       verseStartResult,
