@@ -1,3 +1,7 @@
+/**
+ * stores unique player session id
+ * @packageDocumentation
+ */
 import { nanoid } from "nanoid";
 import { VerseModuleBase } from "./VerseModuleBase";
 

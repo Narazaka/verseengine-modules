@@ -1,6 +1,13 @@
+/**
+ * adjust nameplate position when changing avatars
+ * @packageDocumentation
+ */
 import type { VerseModuleBase } from "./VerseModuleBase";
 import { getOrAddNameplateContainer } from "./util/getOrAddNameplateContainer";
 
+/**
+ * adjust nameplate position when changing avatars
+ */
 export default ({
   player,
   avatarChangedListeners,

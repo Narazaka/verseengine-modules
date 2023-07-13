@@ -1,3 +1,7 @@
+/**
+ * displays join / name changed log
+ * @packageDocumentation
+ */
 import { VerseModuleBase } from "./VerseModuleBase";
 import { getDefaultAddLog } from "./util/log";
 import { PlayerNameData } from "./nameplate";
@@ -21,6 +25,9 @@ function makeLogMessage(data: PlayerSessionIdData & PlayerNameData) {
   }
 }
 
+/**
+ * displays join / name changed log
+ */
 export default ({
   addTextDataChangedListener,
   domRoot,

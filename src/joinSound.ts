@@ -1,8 +1,13 @@
+/**
+ * simple join sound
+ * @packageDocumentation
+ */
 import type { VerseModuleBase } from "./VerseModuleBase";
 import { PlayerSessionIdData } from "./playerSessionId";
 
 let $audioCache: HTMLAudioElement | undefined;
 
+/** @internal */
 export function createJoinAudio(parent: HTMLElement, audioSrc: string) {
   if ($audioCache) return $audioCache;
   const $audio = document.createElement("audio");
@@ -16,12 +21,16 @@ export function createJoinAudio(parent: HTMLElement, audioSrc: string) {
 
 const ids = new Set<string>();
 
+/** @internal */
 export function handleJoinSound(id: string) {
   if (ids.has(id)) return;
   ids.add(id);
   $audioCache?.play();
 }
 
+/**
+ * simple join sound
+ */
 export default ({
   addTextDataChangedListener,
   domRoot,

@@ -1,3 +1,7 @@
+/**
+ * initialize verseModule
+ * @packageDocumentation
+ */
 import type { EnvAdapter, VerseStartResult } from "@verseengine/verse-three";
 import type { GenerateInitializable, VerseModuleBase } from "./VerseModuleBase";
 import putData from "./util/putData";

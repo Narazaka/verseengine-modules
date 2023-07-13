@@ -1,3 +1,7 @@
+/**
+ * simple chat
+ * @packageDocumentation
+ */
 import { VerseModuleBase } from "./VerseModuleBase";
 import { getDefaultAddLog } from "./util/log";
 import { PlayerNameData } from "./nameplate";
@@ -51,6 +55,9 @@ export type ChatMessageData = {
   chatMessage?: string;
 };
 
+/**
+ * simple chat
+ */
 export default ({
   addTextDataChangedListener,
   domRoot,

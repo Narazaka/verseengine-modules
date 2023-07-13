@@ -1,5 +1,12 @@
+/**
+ * enables xr controller
+ * @packageDocumentation
+ */
 import { VerseModuleBase } from "./VerseModuleBase";
 
+/**
+ * enables xr controller
+ */
 export default ({ envAdapter, playerController }: VerseModuleBase) => ({
   initialize() {
     const renderer = envAdapter.getRenderer();

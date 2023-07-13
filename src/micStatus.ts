@@ -1,3 +1,7 @@
+/**
+ * displays mic status on the nameplate
+ * @packageDocumentation
+ */
 import * as THREE from "three";
 import { getOrAddSprite } from "./util/getOrAddSprite";
 import { VerseModuleBase } from "./VerseModuleBase";
@@ -7,6 +11,7 @@ export type MuteMarkData = {
   isMicOn?: boolean;
 };
 
+/** @internal */
 export async function generateHandleMuteMark(textureUrl: string) {
   const loader = new THREE.TextureLoader();
   const tex = await loader.loadAsync(textureUrl);
@@ -32,6 +37,9 @@ export async function generateHandleMuteMark(textureUrl: string) {
   };
 }
 
+/**
+ * displays mic status on the nameplate
+ */
 export default ({
   player,
   guiHandlers,
