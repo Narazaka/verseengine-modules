@@ -3,7 +3,7 @@ import { getOrAddSprite } from "./util/getOrAddSprite";
 import { VerseModuleBase } from "./VerseModuleBase";
 import { getOrAddNameplateContainer } from "./util/getOrAddNameplateContainer";
 
-type MuteMarkData = {
+export type MuteMarkData = {
   isMicOn?: boolean;
 };
 
