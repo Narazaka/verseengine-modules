@@ -5,12 +5,12 @@ import type { OtherPerson, Player } from "@verseengine/verse-three";
  *
  * @example
  * ```ts
- * putData({ foo: 1 });
- * putData({ bar: 2 });
+ * putData({ foo: 1 }); // { foo: 1 }
+ * putData({ bar: 2 }); // { foo: 1, bar: 2 }
  * getData(); // { foo: 1, bar: 2 }
  * ```
  */
-export type PutData = (appendData: Record<string, any>) => unknown;
+export type PutData = (appendData: Record<string, any>) => Record<string, any>;
 
 /**
  * generate `putData()`
@@ -26,6 +26,8 @@ export default function ({
   return function putData(appendData: Record<string, any>) {
     const json = player.getTextData();
     const previousData = json ? JSON.parse(json) : {};
-    player.setTextData(JSON.stringify({ ...previousData, ...appendData }));
+    const data = { ...previousData, ...appendData };
+    player.setTextData(JSON.stringify(data));
+    return data;
   };
 }

@@ -51,12 +51,12 @@ export type VerseModuleBase<
    *
    * @example
    * ```ts
-   * putData({ foo: 1 });
-   * putData({ bar: 2 });
+   * putData({ foo: 1 }); // { foo: 1 }
+   * putData({ bar: 2 }); // { foo: 1, bar: 2 }
    * getData(); // { foo: 1, bar: 2 }
    * ```
    */
-  putData(appendData: Partial<Data>): void;
+  putData(appendData: Partial<Data>): Data;
   /**
    * @see {@link addTextDataChangedListener}
    *
