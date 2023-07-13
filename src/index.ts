@@ -3,13 +3,21 @@ import type { GenerateInitializable, VerseModuleBase } from "./VerseModuleBase";
 import putData from "./putData";
 import getData from "./getData";
 
+/**
+ * initialize verseModule
+ *
+ * @param options
+ */
 export function initializeVerseModule({
   verseStartResult,
   envAdapter,
   domRoot,
 }: {
+  /** return value of `await VerseThree.start()` */
   verseStartResult: VerseStartResult;
+  /** `new VerseThree.DefaultEnvAdapter()` etc. */
   envAdapter: EnvAdapter;
+  /** DOM element to attach some controls */
   domRoot: HTMLElement;
 }) {
   const base: VerseModuleBase = {
