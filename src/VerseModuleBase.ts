@@ -20,7 +20,7 @@ export type GenerateInitializable<
 > = (base: VerseModuleBase<D, RequireData>) => Initializable<O>;
 
 /**
- * module should be return this
+ * module should return this
  */
 export type Initializable<O> = {
   initialize(options: O): unknown;
