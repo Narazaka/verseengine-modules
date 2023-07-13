@@ -2,7 +2,7 @@
 
 modules for verseengine/verse-three
 
-typesafe!
+typesafe initialize!
 
 ## Install
 
@@ -27,7 +27,7 @@ import chat from "verseengine-modules/chat";
 import { setNoname } from "verseengine-modules/util/playerName";
 
 const domRoot = document.getElementById("app");
-const envAdapter = new VerseThree.DefaultEnvAdapter();
+const envAdapter = new VerseThree.DefaultEnvAdapter(...);
 const verseStartResult = await VerseThree.start(...);
 ticks.push(verseStartResult.tick);
 
