@@ -9,7 +9,7 @@ import type { PlayerSessionIdData } from "./playerSessionId";
 import { getOrAddNameplateContainer } from "./util/graphic/getOrAddNameplateContainer";
 import { playerName } from "./util/playerName";
 import { NameplatePositionHeightOptions } from "./util/graphic/namePlatePositionHeight";
-import { NameplateTextureOptions } from "./util/graphic/getTextTextureCanvas";
+import { TextTextureOptions } from "./util/graphic/getTextTextureCanvas";
 import { createTextSpriteData } from "./util/graphic/createTextSpriteData";
 
 const nameMaxLength = 20;
@@ -63,7 +63,7 @@ function handleNameplate(
   id: string,
   name: string | undefined,
   nameplatePositionHeightOptions?: NameplatePositionHeightOptions,
-  nameplateTextureOptions?: NameplateTextureOptions,
+  nameplateTextureOptions?: TextTextureOptions,
 ) {
   let exists = false;
   const nameplate = getOrAddSprite(
@@ -125,7 +125,7 @@ export default ({
     /**
      * nameplate texture options
      */
-    nameplateTextureOptions?: NameplateTextureOptions;
+    nameplateTextureOptions?: TextTextureOptions;
     /**
      * name change handler
      *

@@ -1,6 +1,6 @@
 import { getTextureCanvasByObjectCache } from "./getTextureCanvasByObjectCache";
 
-export type NameplateTextureOptions = {
+export type TextTextureOptions = {
   /**
    * text font
    *
@@ -59,7 +59,7 @@ const font = "128px sans-serif";
 export function getTextTextureCanvas(
   text: string,
   idOrCanvas: number | HTMLCanvasElement,
-  options?: NameplateTextureOptions,
+  options?: TextTextureOptions,
 ) {
   const canvas =
     typeof idOrCanvas === "number"

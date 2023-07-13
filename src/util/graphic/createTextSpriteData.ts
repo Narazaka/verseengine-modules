@@ -1,10 +1,10 @@
 import * as THREE from "three";
 import {
-  NameplateTextureOptions,
+  TextTextureOptions,
   getTextTextureCanvas,
 } from "./getTextTextureCanvas";
 
-export type NameplateSpriteData = {
+export type TextSpriteData = {
   material: THREE.SpriteMaterial;
   scale: {
     x: number;
@@ -25,8 +25,8 @@ export type NameplateSpriteData = {
 export function createTextSpriteData(
   text: string,
   idOrCanvas: number | HTMLCanvasElement,
-  options?: NameplateTextureOptions,
-): NameplateSpriteData {
+  options?: TextTextureOptions,
+): TextSpriteData {
   const canvas = getTextTextureCanvas(text, idOrCanvas, options);
   const texture = new THREE.CanvasTexture(canvas);
   const material = new THREE.SpriteMaterial({ map: texture });
