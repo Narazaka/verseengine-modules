@@ -2,6 +2,8 @@
 
 modules for verseengine/verse-three
 
+typesafe!
+
 ## Install
 
 ```sh
