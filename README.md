@@ -52,7 +52,7 @@ verseModule
   .initialize(enableXrController)
   .initialize(enableMoveController)
   .initialize(nameLog, {})
-  .initialize(chat, {});
+  .initialize(chat, { balloon: true });
 ```
 
 see [examples/src/main.ts](https://github.com/Narazaka/verseengine-modules/blob/master/examples/src/main.ts)
