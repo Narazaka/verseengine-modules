@@ -62,7 +62,7 @@ function main() {
       .initialize(enableXrController)
       .initialize(enableMoveController)
       .initialize(nameLog, {})
-      .initialize(chat, {});
+      .initialize(chat, { balloon: true });
   });
 
   if ("xr" in navigator && navigator.xr) {

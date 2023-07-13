@@ -56,13 +56,13 @@ export function setupScene(domRoot: HTMLElement, ticks: Tick[]) {
   scene.add(new THREE.GridHelper(50, 50));
 
   {
-    const mirrorGeometry = new THREE.PlaneGeometry(4, 2, 1, 1);
+    const mirrorGeometry = new THREE.PlaneGeometry(4, 3, 1, 1);
     const mirror = new Reflector(mirrorGeometry, {
       textureWidth: window.innerWidth * window.devicePixelRatio,
       textureHeight: window.innerHeight * window.devicePixelRatio,
       color: 0x999999,
     });
-    mirror.position.y = 1;
+    mirror.position.y = 1.5;
     mirror.position.z = -5;
     mirror.camera.layers.enableAll();
     scene.add(mirror);
