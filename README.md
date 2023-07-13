@@ -10,6 +10,11 @@ typesafe initialize!
 npm i verseengine-modules
 ```
 
+## Resources
+
+- **[API Document](https://narazaka.github.io/verseengine-modules/)**
+- [MyVerse](https://myverse.narazaka.net) is using this library.
+
 ## Usage
 
 ```ts
@@ -74,10 +79,6 @@ verseModule
   .initialize(nameplate, {})
   .initialize(myModule, { prefix: "name =" });
 ```
-
-## API Docs
-
-[TypeDoc](https://narazaka.github.io/verseengine-modules/)
 
 ## License
 
