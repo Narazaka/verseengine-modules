@@ -11,8 +11,16 @@ export type MuteMarkData = {
   isMicOn?: boolean;
 };
 
+export type MuteMarkOptions = {
+  position?: { x?: number; y?: number };
+  scale?: { x?: number; y?: number; z?: number };
+};
+
 /** @internal */
-export async function generateHandleMuteMark(textureUrl: string) {
+export async function generateHandleMuteMark(
+  textureUrl: string,
+  options?: MuteMarkOptions,
+) {
   const loader = new THREE.TextureLoader();
   const tex = await loader.loadAsync(textureUrl);
   const mat = new THREE.SpriteMaterial({ map: tex });
@@ -27,8 +35,13 @@ export async function generateHandleMuteMark(textureUrl: string) {
       "muteMark",
       {
         afterCreate: (s) => {
-          s.position.y = 0.3;
-          s.scale.set(0.15, 0.15, 0.15);
+          s.position.x = options?.position?.x || 0;
+          s.position.y = options?.position?.y || 0.2;
+          s.scale.set(
+            options?.scale?.x || 0.1,
+            options?.scale?.y || 0.1,
+            options?.scale?.z || 0.1,
+          );
           s.material = mat;
         },
       },
@@ -46,8 +59,11 @@ export default ({
   putData,
   addTextDataChangedListener,
 }: VerseModuleBase<MuteMarkData>) => ({
-  async initialize(options: { textureUrl: string }) {
-    const handleMuteMark = await generateHandleMuteMark(options.textureUrl);
+  async initialize(options: { textureUrl: string; options?: MuteMarkOptions }) {
+    const handleMuteMark = await generateHandleMuteMark(
+      options.textureUrl,
+      options.options,
+    );
     const micOnChange = () => {
       const data: MuteMarkData = { isMicOn: guiHandlers.isMicOn() };
       putData(data);
