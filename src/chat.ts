@@ -76,6 +76,7 @@ function handleChatBalloon(
   avatarObject: THREE.Object3D,
   text: string | undefined,
   options?: {
+    position?: { x?: number; y?: number };
     nameplatePositionHeightOptions?: NameplatePositionHeightOptions;
     textTextureOptions?: ChatBalloonTextTexrureOptions;
   },
@@ -90,7 +91,8 @@ function handleChatBalloon(
     "chatBalloon",
     {
       afterCreate: (s) => {
-        s.position.y = 0.4;
+        s.position.x = options?.position?.x || 0;
+        s.position.y = options?.position?.y || 0.4;
       },
       afterExists: () => {
         exists = true;
@@ -164,6 +166,8 @@ export default ({
            * @default true
            */
           local?: boolean;
+          /** position */
+          position?: { x?: number; y?: number };
           /**
            * nameplate position height options
            */
