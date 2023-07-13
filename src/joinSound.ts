@@ -8,12 +8,16 @@ import { PlayerSessionIdData } from "./playerSessionId";
 let $audioCache: HTMLAudioElement | undefined;
 
 /** @internal */
-export function createJoinAudio(parent: HTMLElement, audioSrc: string) {
+export function createJoinAudio(
+  parent: HTMLElement,
+  audioSrc: string,
+  volume = 0.03,
+) {
   if ($audioCache) return $audioCache;
   const $audio = document.createElement("audio");
   $audio.preload = "auto";
   $audio.src = audioSrc;
-  $audio.volume = 0.03;
+  $audio.volume = volume;
   parent.appendChild($audio);
   $audioCache = $audio;
   return $audio;
@@ -35,8 +39,8 @@ export default ({
   addTextDataChangedListener,
   domRoot,
 }: VerseModuleBase<{}, PlayerSessionIdData>) => ({
-  initialize(options: { audioSrc: string }) {
-    createJoinAudio(domRoot, options.audioSrc);
+  initialize(options: { audioSrc: string; volume?: number }) {
+    createJoinAudio(domRoot, options.audioSrc, options.volume);
     addTextDataChangedListener((_, data) => {
       handleJoinSound(data.playerSessionId);
     });
